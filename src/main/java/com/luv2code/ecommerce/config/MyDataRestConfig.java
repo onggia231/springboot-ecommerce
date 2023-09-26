@@ -26,7 +26,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         entityManager = theEntityManager;
     }
 
-
+// configureRepositoryRestConfiguration được gọi bởi Spring trong quá trình cấu hình Spring Data REST.
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
 
@@ -42,6 +42,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         exposeIds(config);
     }
 
+// sử dụng để vô hiệu hóa các phương thức HTTP cụ thể (PUT, POST, DELETE) cho một lớp cụ thể trong Spring Data REST
     private void disableHttpMethods(Class theClass, RepositoryRestConfiguration config, HttpMethod[] theUnsupportedActions) {
         config.getExposureConfiguration()
                 .forDomainType(theClass)
@@ -49,6 +50,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
                 .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
     }
 
+// để tiết lộ các ID của tất cả các lớp đối tượng như một phần của REST API
     private void exposeIds(RepositoryRestConfiguration config) {
 
         // expose entity ids

@@ -25,22 +25,31 @@ public class CheckoutServiceImpl implements CheckoutService {
     @Transactional
     public PurchaseResponse placeOrder(Purchase purchase) {
 
+//        purchase: chứa thông tin về đơn hàng và các mặt hàng trong đơn hàng.
+
         // retrieve the order info from dto
+//        lấy thông tin đơn hàng từ purchase.
         Order order = purchase.getOrder();
 
         // generate tracking number
+//         tạo một mã số theo dõi đơn hàng
         String orderTrackingNumber = generateOrderTrackingNumber();
         order.setOrderTrackingNumber(orderTrackingNumber);
 
         // populate order with orderItems
+//        lấy danh sách các mặt hàng trong đơn hàng từ
         Set<OrderItem> orderItems = purchase.getOrderItems();
+//        và thêm chúng vào đơn hàng
         orderItems.forEach(item -> order.add(item));
 
         // populate order with billingAddress and shippingAddress
+//         thêm thông tin về địa chỉ thanh toán
         order.setBillingAddress(purchase.getBillingAddress());
+//        địa chỉ giao hàng
         order.setShippingAddress(purchase.getShippingAddress());
 
         // populate customer with order
+//         lấy thông tin khách hàng
         Customer customer = purchase.getCustomer();
         customer.add(order);
 

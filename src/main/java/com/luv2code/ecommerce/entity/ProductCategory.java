@@ -23,4 +23,6 @@ public class ProductCategory {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private Set<Product> products;
 
+//    Điều này nghĩa là mỗi đối tượng ProductCategory có thể liên kết với nhiều đối tượng Product,
+
 }

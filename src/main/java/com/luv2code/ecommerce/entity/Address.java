@@ -34,6 +34,9 @@ public class Address {
     @OneToOne
     @PrimaryKeyJoinColumn
     private Order order;
+
+// @PrimaryKeyJoinColumn   Annotation này xác định rằng Address sẽ sử dụng khóa chính của nó (id) làm khóa chính cũng như khóa ngoại để liên kết với Order.
+// Điều này nghĩa là mỗi Order sẽ có một Address riêng và ngược lại
 }
 
 

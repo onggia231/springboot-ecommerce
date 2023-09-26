@@ -21,6 +21,8 @@ public class State {
     @JoinColumn(name="country_id")
     private Country country;
 
+//    Đây là mối quan hệ nhiều-một giữa State và Country. Điều này nghĩa là mỗi đối tượng State liên kết với một đối tượng Country,
+
 }
 
 

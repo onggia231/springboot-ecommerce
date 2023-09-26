@@ -32,7 +32,8 @@ public class OrderItem {
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
-
+// Đây là mối quan hệ nhiều-một giữa OrderItem và Order. Điều này nghĩa là mỗi đối tượng OrderItem liên kết với một đối tượng Order,
+// trong đó Order là lớp đối tượng biểu thị cho đơn đặt hàng.
 }
 
 
